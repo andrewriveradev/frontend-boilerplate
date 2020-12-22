@@ -53,7 +53,7 @@ const Person = {
             console.log(`Hi, my name is ${this.name}!`)
         }, 100)
     },
-    sayHiArrow () {
+    sayHiArrow() {
         setTimeout(() => {
             console.log(`Hi, my name is ${this.name} again!`)
         }, 100)
