@@ -82,3 +82,32 @@ const average = (...arr) => {
 }
 console.log(average(23, 34, 23, 998, 24, 56, 100))
 // тут все дело в области видимости
+
+const newMap = new Map([
+    ['ages', 16],
+    ['sexy', true],
+    ['name', 'Nina'],
+    ['tits', 3],
+    ['height', 175]
+]
+)
+// Тут можно передать массив с парами значений(тоже массивы)
+
+console.log(newMap.get('ages'))
+console.log(newMap.get('sexy'))
+console.log(newMap.get('name'))
+console.log(newMap.keys()) // ключи мапа
+console.log(newMap.values()) // значения мапа
+console.log(newMap.entries()) // набор пар ключ:значение
+
+const values = newMap.values()
+console.log(values)
+// это я работаю с map
+
+const arr = [1, 2, 3, 4, 5, 6, 7]
+const sum = arr.reduce((summary, item) => summary + item)
+
+const mult = arr.map((item) => Math.pow(item, 2))
+// это я возвожу в квадрат по очереди все числа массива
+console.log(sum)
+console.log(mult)
