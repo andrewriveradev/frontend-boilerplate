@@ -4,11 +4,19 @@ body{
 	h1{
 		text-align: center;
 		color: blue;
+		
+		@media screen and(max-width: 800px){
+			color: yellow;
+		}
 	}
 
 	h2{
 		text-align: center;
 		color: blue;
+		
+		@media screen and(max-width: 800px){
+			color: red;
+		}
 	}
 
 	.anim{
