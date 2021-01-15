@@ -14,8 +14,8 @@ function setMode(isProduction = false) {
   }
 }
 
-const dev = gulp.parallel(/*compileHTML, */styles, imageMinify /*, scripts*/)
+const dev = gulp.parallel(compileHTML, styles, imageMinify, scripts)
 const build = gulp.series(clean, copyDependencies, dev)
 
-module.exports.dev = gulp.series(setMode(), build /*serve*/)
+module.exports.dev = gulp.series(setMode(), build ,serve)
 module.exports.build = gulp.series(setMode(true), build)
