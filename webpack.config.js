@@ -1,9 +1,13 @@
 const HtmlWebpackPlugin = require("html-webpack-plugin");
 const MiniCssExtractPlugin = require("mini-css-extract-plugin");
-const BabelMinifyPlugin = require("babel-minify-webpack-plugin");
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const path = require("path");
 const webpack = require('webpack')
+const TerserPlugin = require('terser-webpack-plugin');
+const { minify } = require("terser");
+const ImageMinimizerPlugin = require('image-minimizer-webpack-plugin');
+
+const excludes = [path.join(__dirname, '/node_modules'), path.join(__dirname, '/gulp')]
 
 module.exports = {
 	mode: "development",
@@ -15,27 +19,56 @@ module.exports = {
 		path: path.join(__dirname, "build"),
 		filename: "[name].bundle.js",
 	},
-	devtool: "source-map",
+	devtool: "inline-source-map",
 	devServer: {
-		contentBase: path.join(__dirname, "dist"),
-		compress: true,
+		contentBase: path.join(__dirname, "dist/"),
+		compress: false,
 		port: 9000,
+		open: true,
+		hot: true,
+		overlay: true,
+	},
+	optimization: {
+		minimize: false,
+		minimizer: [new TerserPlugin({
+			terserOptions: {
+				sourceMap: true,
+				ecma: 5,
+				parse: {},
+				compress: {},
+				mangle: true,
+				module: false,
+				output: null,
+				format: null,
+				toplevel: false,
+				nameCache: null,
+				ie8: false,
+				keep_classnames: undefined,
+				keep_fnames: false,
+				safari10: false,
+			  },
+			exclude: excludes,
+		})]
 	},
 	module: {
 		rules: [
 			{
 				test: /\.js$/,
-				exclude: /(node_modules|gulp)/,
+				exclude: excludes,
 				use: {
 					loader: "babel-loader",
 					options: {
-						presets: ["env"],
+						presets: ['@babel/preset-env'],
 					},
 				},
 			},
 			{
+				test: /\.ts$/,
+				loader: 'ts-loader',
+			},
+			{
 				test: /\.scss$/,
-				use: [MiniCssExtractPlugin.loader, "css-loader", "sass-loader"],
+				use: [MiniCssExtractPlugin.loader, "css-loader", 'postcss-loader', "sass-loader"],
 			},
 			{
 				test: /\.(jpg|jpeg|png|ico)$/,
@@ -47,6 +80,7 @@ module.exports = {
 					},
 				},
 			},
+			{ test: /\.svg$/, use: 'svg-inline-loader' },
 		],
 	},
 	plugins: [
@@ -58,15 +92,41 @@ module.exports = {
 				charset: "utf-8",
 				viewport: "width=device-width, initial-scale=1.0, shrink-to-fit=no",
 			},
+			template: 'src/index.html',
 			minify: false,
 			cache: true,
 			scriptLoading: "defer",
 		}),
-        new BabelMinifyPlugin(),
         new CleanWebpackPlugin({
             dry: true,
             verbose: true
         }),
-        new webpack.ProgressPlugin()
+		new webpack.ProgressPlugin(),
+		new ImageMinimizerPlugin({
+			test: /\.(jpg|jpeg|png|ico)$/,
+			deleteOriginalAssets: false,
+			severityError: 'warning',
+			filename: '[name].webp',
+			loader: false,
+			minimizerOptions: {
+				plugins: [
+				['imagemin-webp'],
+				['mozjpeg', { quality: 80 }],
+				['gifsicle', { interlaced: true, optimizationLevel: 3 }],
+				['jpegtran', { progressive: true }],
+				['optipng', { optimizationLevel: 5 }],
+				[
+				  'svgo',
+				  {
+					plugins: ['imagemin-webp',
+					  {
+						removeViewBox: false,
+					  },
+					],
+				  },
+				],
+			  ],
+			},
+		  })
 	],
 };
