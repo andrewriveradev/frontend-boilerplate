@@ -19,10 +19,9 @@ body{
 		}
 	}
 
-	.anim{
-		margin: 0 auto;
-		width: 500px;
-		height: 400px;
-		background: green;
+	.img{
+		width: auto;
+		height: auto;
+		background-image: url('../img/demo.jpg');
 	}
 }
