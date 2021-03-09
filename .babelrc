@@ -1,4 +1,4 @@
 {
-    "presets": ["minify", "@babel/preset-react"],
+    "presets": ["minify", "@babel/preset-react", "@babel/preset-typescript"],
     "plugins": ["@babel/plugin-proposal-class-properties"]
   }
