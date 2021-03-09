@@ -1,32 +1,184 @@
 {
   "env": {
-    "jquery": true
+    "browser": true,
+    "es6": true
   },
-
+  "parser": "@typescript-eslint/parser",
   "parserOptions": {
-    "ecmaVersion": 6,
-    "sourceType": "module",
-    "ecmaFeatures": {
-        "jsx": true
+    "project": "./tsconfig.json"
+  },
+  "settings": {
+    "react": {
+      "version": "detect"
+    },
+    "import/ignore": [
+      "node_modules"
+    ],
+    "import/resolver": {
+      "typescript": {}
+    },
+    "import/parsers": {
+      "@typescript-eslint/parser": [
+        ".ts",
+        ".tsx"
+      ]
     }
-},
-
-  "overrides": [
-    {
-      "files": [ "src/**/*.js" ],
-      "extends": [
-        "standard",
-        "htmlacademy/es6"
-      ],
-      "rules": {
-        "eqeqeq": "warn",
-        "indent": ["error", 4],
-        "semi": ["error", "never"],
-        "quotes": "off",
-        "no-console": "off",
-        "no-unused-vars": "warn",
-        "space-before-function-paren": "warn"
+  },
+  "plugins": [
+    "prettier",
+    "prefer-arrow"
+  ],
+  "extends": [
+    "airbnb-typescript",
+    "airbnb/hooks",
+    "plugin:@typescript-eslint/recommended",
+    "plugin:@typescript-eslint/eslint-recommended",
+    "plugin:@typescript-eslint/recommended-requiring-type-checking",
+    "plugin:eslint-comments/recommended",
+    "plugin:promise/recommended",
+    "plugin:unicorn/recommended",
+    "prettier/react",
+    "prettier/@typescript-eslint",
+    "plugin:import/errors",
+    "plugin:import/warnings",
+    "plugin:import/typescript",
+    "plugin:sonarjs/recommended",
+    "prettier"
+  ],
+  "rules": {
+    "@typescript-eslint/explicit-module-boundary-types": [
+      "error",
+      {
+        "allowTypedFunctionExpressions": true
       }
-    }
-  ]
+    ],
+    "@typescript-eslint/no-unsafe-assignment": "off",
+    "@typescript-eslint/explicit-function-return-type": [
+      "error",
+      {
+        "allowExpressions": true,
+        "allowDirectConstAssertionInArrowFunctions": true
+      }
+    ],
+    "@typescript-eslint/naming-convention": [
+      "error",
+      {
+        "selector": "interface",
+        "format": [
+          "PascalCase"
+        ],
+        "custom": {
+          "regex": "^I[A-Z]",
+          "match": true
+        }
+      }
+    ],
+    "@typescript-eslint/no-unused-vars": "error",
+    "@typescript-eslint/no-floating-promises": [
+      "error",
+      {
+        "ignoreVoid": true,
+        "ignoreIIFE": true
+      }
+    ],
+    "@typescript-eslint/array-type": [
+      "error",
+      {
+        "default": "array-simple",
+        "readonly": "array-simple"
+      }
+    ],
+    "@typescript-eslint/method-signature-style": [
+      "error",
+      "method"
+    ],
+    "@typescript-eslint/no-use-before-define": "off",
+    "import/prefer-default-export": "off",
+    "import/order": [
+      "error",
+      {
+        "groups": [
+          [
+            "external",
+            "builtin"
+          ],
+          [
+            "index",
+            "sibling",
+            "internal",
+            "parent"
+          ]
+        ],
+        "newlines-between": "always-and-inside-groups"
+      }
+    ],
+    "no-restricted-imports": ["error", {
+      "patterns": ["_mock"]
+    }],
+    "react/prop-types": "off",
+    "react/jsx-props-no-spreading": "off",
+    "react/jsx-boolean-value": [
+      "error",
+      "always"
+    ],
+    "react/react-in-jsx-scope": "off",
+    "react/no-array-index-key": "off",
+    "prettier/prettier": [
+      "error",
+      {
+        "usePrettierrc": true
+      }
+    ],
+    "prefer-arrow/prefer-arrow-functions": "error",
+    "implicit-arrow-linebreak": "off",
+    "unicorn/filename-case": [
+      "error",
+      {
+        "cases": {
+          "camelCase": true,
+          "pascalCase": true
+        }
+      }
+    ],
+    "unicorn/no-fn-reference-in-iterator": "off",
+    "unicorn/numeric-separators-style": [
+      "error",
+      {
+        "number": {
+          "minimumDigits": 0,
+          "groupLength": 3
+        }
+      }
+    ],
+    "unicorn/prevent-abbreviations": "off",
+    "unicorn/no-null": "off",
+    "unicorn/no-reduce": "off",
+    "promise/prefer-await-to-then": "error",
+    "no-console": "error",
+    "newline-after-var": [
+      "error",
+      "always"
+    ],
+    "newline-before-return": "error",
+    "arrow-body-style": [
+      "error",
+      "as-needed"
+    ],
+    "no-param-reassign": [
+      "error",
+      {
+        "props": true,
+        "ignorePropertyModificationsFor": [
+          "draft",
+          "context"
+        ]
+      }
+    ],
+    "no-void": [
+      "error",
+      {
+        "allowAsStatement": true
+      }
+    ]
+  }
 }

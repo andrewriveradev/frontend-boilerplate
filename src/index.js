@@ -1,3 +1,3 @@
-import './js/analytics'
-import './js/script'
+import './ts/analytics'
+import './ts/script'
 import './styles/style.scss'
