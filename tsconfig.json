@@ -1,10 +1,60 @@
 {
-    "compilerOptions": {
-      "outDir": "./build/",
-      "noImplicitAny": true,
-      "module": "es6",
-      "target": "es5",
-      "jsx": "react",
-      "allowJs": true
-    }
-  }
+  "compilerOptions": {
+    "target": "es5",
+    "module": "es2020",
+    "jsx": "preserve",
+    "strict": true,
+    "baseUrl": ".",
+    "sourceMap": true,
+    "removeComments": true,
+    "skipLibCheck": true,
+    "noImplicitAny": true,
+    "moduleResolution": "Node",
+    "allowSyntheticDefaultImports": true,
+    "lib": [
+      "ESNext",
+      "dom"
+    ],
+    "types": [
+      "node"
+    ],
+    "paths": {
+      "@src/*": [
+        "src/*"
+      ],
+      "@app/*": [
+        "src/app/*"
+      ],
+      "@common/*": [
+        "src/common/*"
+      ],
+      "@components/*": [
+        "src/components/*"
+      ],
+      "@features/*": [
+        "src/features/*"
+      ],
+      "@fonts/*": [
+        "src/fonts/*"
+      ],
+      "@img/*": [
+        "src/images/*"
+      ],
+      "@icons/*": [
+        "src/images/icons/*"
+      ],
+      "@pages/*": [
+        "src/pages/*"
+      ],
+      "@styles/*": [
+        "src/styles/*"
+      ]
+    },
+    "typeRoots": [
+      "src/common/types/declares/*"
+    ]
+  },
+  "exclude": [
+    "node_modules"
+  ]
+}

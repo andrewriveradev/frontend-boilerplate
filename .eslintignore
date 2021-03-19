@@ -1,5 +1,8 @@
 build
-gulpfiles.js
-
+gulpfile.js
 /gulp
 /src/local_modules
+/src/node_modules
+webpack.common.js
+webpack.dev.js
+webpack.prod.js
