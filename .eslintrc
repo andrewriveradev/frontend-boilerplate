@@ -11,9 +11,7 @@
     "react": {
       "version": "detect"
     },
-    "import/ignore": [
-      "node_modules"
-    ],
+    "import/ignore": ["node_modules", "local_modules"],
     "import/resolver": {
       "typescript": {}
     },
@@ -29,12 +27,14 @@
     "prefer-arrow"
   ],
   "extends": [
+    "airbnb",
     "airbnb-typescript",
     "airbnb/hooks",
     "plugin:@typescript-eslint/recommended",
     "plugin:@typescript-eslint/eslint-recommended",
     "plugin:@typescript-eslint/recommended-requiring-type-checking",
     "plugin:eslint-comments/recommended",
+    "plugin:node/recommended",
     "plugin:promise/recommended",
     "plugin:unicorn/recommended",
     "prettier/react",
