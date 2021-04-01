@@ -6,8 +6,8 @@
   "scripts": {
     "gulp-dev": "gulp dev",
     "gulp-build": "gulp build",
-    "webpack-dev": "cross-env NODE_ENV=development webpack serve --config webpack.dev.js",
-    "webpack-build": "cross-env NODE_ENV=production webpack --config webpack.prod.js"
+    "webpack-dev": "cross-env NODE_ENV=development webpack serve --config webpack/webpack.dev.js",
+    "webpack-build": "cross-env NODE_ENV=production webpack --config webpack/webpack.prod.js"
   },
   "browserslist": {
     "production": [
@@ -122,7 +122,7 @@
     "react-animate-height": "^2.0.23",
     "react-day-picker": "^7.4.8",
     "react-dom": "^17.0.1",
-    "react-final-form": "^6.5.2",
+    "react-final-form": "^6.5.3",
     "react-final-form-listeners": "^1.0.3",
     "react-flex-ready": "^1.2.0",
     "react-helmet": "^6.1.0",
@@ -138,7 +138,7 @@
     "terser": "^5.5.1",
     "terser-webpack-plugin": "^4.2.3",
     "webp-converter": "2.2.3",
-    "webpack": "^5.27.0",
+    "webpack": "^5.27.1",
     "webpack-cli": "^4.4.0",
     "webpack-dev-server": "^3.11.2",
     "webpack-merge": "^5.7.3",
